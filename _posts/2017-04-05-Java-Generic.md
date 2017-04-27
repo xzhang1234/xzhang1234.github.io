@@ -1,4 +1,4 @@
-#####```List list = new ArrayList()``` v.s ```List<Integer> list = new ArrayList<>()```  
+##### ```List list = new ArrayList()``` v.s ```List<Integer> list = new ArrayList<>()```  
 
 ```
 List list = new ArrayList();
@@ -9,7 +9,7 @@ Integer secondElement = (Integer) list.get(1); //typecast runtime error
 
 List<Integer> list = new ArrayList<>();
 list.add(1);
-list.add("abc"); //typecast compile time error
+// list.add("abc"); //typecast compile time error
 
 ```
 
@@ -22,3 +22,14 @@ will cause a runtime error.
 
 ```List<Integer> list = new ArrayList<>()``` will force the compiler to check the type at the compile time. Actually, the compiler will only check the type at the compile time, and erase the type at the runtime. 
 
+##### ```List<? extends Object> list = new ArrayList<Integer>()```  
+
+```
+ArrayList<Integer> arrayList = new ArrayList<Integer>();
+List<? extends Object> list = arrayList;
+
+arrayList.add(1);
+// list.add(2); //compiler error
+list.get(0);
+
+```
